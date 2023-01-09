@@ -23,7 +23,7 @@ class TestStartPage:
         """Generate random string"""
         return ''.join(random.choice(string.ascii_letters) for _ in range(length))
 
-    def test_start_page(self):
+    def test_invalid_login(self):
         """
         - Pre-conditions:
             - Open start page
@@ -50,6 +50,48 @@ class TestStartPage:
         password_field = driver.find_element(by=By.XPATH, value=".//input[@placeholder='Password']")
         password_field.clear()
         password_field.send_keys("pwd123")
+        self.log.info("Password field was filled")
+        sleep(1)
+
+        # Click on SignIn button
+        sign_in_button = driver.find_element(by=By.XPATH, value=".//button[text()='Sign In']")
+        sign_in_button.click()
+        self.log.info("SignUp button was click")
+        sleep(1)
+
+        # Verify error
+        error_message = driver.find_element(by=By.XPATH, value=".//div[@class='alert alert-danger text-center']")
+        assert error_message.text == "Error"
+        self.log.info("Error message was verified")
+        sleep(1)
+
+        driver.close()
+
+    def test_empty_login(self):
+        """
+        - Pre-conditions:
+            - Open start page
+        - Steps:
+            - Fill login
+            - Fill password
+            - Click on SignIn button
+            - Verify error
+        """
+        # Open start page
+        driver = webdriver.Chrome(executable_path="/Users/almin/PycharmProjects/QAComplexAPP-G6/chromedriver")
+        driver.get("https://qa-complexapp.onrender.com")
+        self.log.info("Start page was opened")
+        sleep(1)
+
+        # Fill login
+        login_field = driver.find_element(by=By.XPATH, value=".//input[@placeholder='Username']")
+        login_field.clear()
+        self.log.info("Login field was filled")
+        sleep(1)
+
+        # Fill password
+        password_field = driver.find_element(by=By.XPATH, value=".//input[@placeholder='Password']")
+        password_field.clear()
         self.log.info("Password field was filled")
         sleep(1)
 
@@ -112,3 +154,5 @@ class TestStartPage:
         assert hello_message.text == f"Hello {username_value.lower()}, your feed is empty."
         assert driver.find_element(by=By.XPATH, value=".//strong").text == username_value.lower()
         self.log.info("Registration for user '%s' was success and verified", username_value)
+
+        driver.close()
