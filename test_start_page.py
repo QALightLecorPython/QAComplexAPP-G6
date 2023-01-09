@@ -154,3 +154,5 @@ class TestStartPage:
         assert hello_message.text == f"Hello {username_value.lower()}, your feed is empty."
         assert driver.find_element(by=By.XPATH, value=".//strong").text == username_value.lower()
         self.log.info("Registration for user '%s' was success and verified", username_value)
+
+        driver.close()
