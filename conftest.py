@@ -17,4 +17,5 @@ def driver():
 def start_page(driver):
     """Creates start page object"""
     driver.get(BaseConstants.URL)
+    driver.implicitly_wait(1)
     return StartPage(driver)
