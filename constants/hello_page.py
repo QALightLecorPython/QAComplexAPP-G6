@@ -3,6 +3,3 @@ class HelloPageConsts:
 
     HELLO_MESSAGE_XPATH = ".//h2"
     USERNAME_IN_HELLO_MESSAGE_XPATH = ".//strong"
-
-    # Header
-    CREATE_POST_BUTTON_XPATH = ".//a[@href='/create-post']"
