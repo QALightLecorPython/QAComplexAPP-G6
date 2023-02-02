@@ -4,6 +4,11 @@ import random
 import string
 from time import sleep
 
+from selenium import webdriver
+
+from constants.base import BaseConstants
+from pages.text_presets import EN_TEXT
+
 
 def random_num():
     """Generate random number"""
@@ -13,6 +18,12 @@ def random_num():
 def random_str(length=5):
     """Generate random string"""
     return ''.join(random.choice(string.ascii_letters) for _ in range(length))
+
+
+def random_text(length=15, preset=EN_TEXT):
+    """Create text using provided preset"""
+    words = preset.split(" ")
+    return " ".join((random.choice(words).replace("\n", "") for _ in range(length)))
 
 
 def wait_until_ok(timeout=5, period=0.25):
@@ -36,3 +47,29 @@ def wait_until_ok(timeout=5, period=0.25):
         return wrapper
 
     return decorator
+
+
+def log_wrapper(func):
+    """Add logs for method based on the docstring"""
+
+    def wrapper(*args, **kwargs):
+        log = logging.getLogger("[LogDecorator]")
+        result = func(*args, **kwargs)
+        # log.info(f"{func.__doc__}; Args: {args}; Kwargs: {kwargs}")
+        log.info(func.__doc__)
+        return result
+
+    return wrapper
+
+
+def create_driver(browser):
+    """Create driver according to provided browser"""
+    if browser == BaseConstants.CHROME:
+        driver = webdriver.Chrome(executable_path=BaseConstants.DRIVER_PATH)
+    elif browser == BaseConstants.FIREFOX:
+        driver = webdriver.Firefox(executable_path=BaseConstants.DRIVER_PATH)
+    else:
+        raise ValueError(f"Unknown browser name: {browser}")
+    driver.implicitly_wait(1)
+    driver.get(BaseConstants.URL)
+    return driver

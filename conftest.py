@@ -1,14 +1,14 @@
 import pytest
-from selenium import webdriver
 
-from constants.base import BaseConstants
 from pages.start_page import StartPage
+from pages.utils import create_driver
+from pages.values import User, Post
 
 
 @pytest.fixture()
-def driver():
+def driver(browser):
     """Creates selenium driver"""
-    driver = webdriver.Chrome(executable_path=BaseConstants.DRIVER_PATH)
+    driver = create_driver(browser=browser)
     yield driver
     driver.close()
 
@@ -16,6 +16,25 @@ def driver():
 @pytest.fixture()
 def start_page(driver):
     """Creates start page object"""
-    driver.get(BaseConstants.URL)
-    driver.implicitly_wait(1)
     return StartPage(driver)
+
+
+@pytest.fixture()
+def empty_user():
+    """Creates an empty user"""
+    return User()
+
+
+@pytest.fixture()
+def random_user(empty_user):
+    """Creates random user"""
+    empty_user.fill_data()
+    return empty_user
+
+
+@pytest.fixture()
+def random_post():
+    """Creates random post"""
+    post = Post()
+    post.fill_data()
+    return post

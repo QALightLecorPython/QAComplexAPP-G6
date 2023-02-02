@@ -57,3 +57,6 @@ class BasePage:
         """Compare element text to provided one"""
         element = self.wait_until_displayed(by=By.XPATH, xpath=xpath)
         return element.text == text
+
+    def __repr__(self):
+        return str(self.__class__.__name__)
