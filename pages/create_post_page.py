@@ -17,6 +17,7 @@ class CreatePostPage(BasePage):
         """Create post using provided values"""
         self.fill_field(xpath=self.const.TITLE_INPUT_XPATH, value=post.title)
         self.fill_field(xpath=self.const.BODY_AREA_XPATH, value=post.body)
+
         self.click(xpath=self.const.SAVE_POST_BUTTON_XPATH)
 
         from pages.post_page import PostPage

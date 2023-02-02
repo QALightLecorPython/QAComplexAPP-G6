@@ -45,3 +45,8 @@ class StartPage(BasePage):
 
         from pages.hello_page import HelloPage
         return HelloPage(self.driver)
+
+    @log_wrapper
+    def verify_sign_in_exists(self):
+        """Verify that sign-in button is present on the page"""
+        assert self.is_element_exists(xpath=self.const.SIGN_IN_BUTTON_XPATH)

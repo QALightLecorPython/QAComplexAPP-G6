@@ -3,3 +3,4 @@ class PostPageConsts:
 
     POST_CREATED_MESSAGE_XPATH = ".//div[@class='alert alert-success text-center']"
     POST_CREATED_MESSAGE_TEXT = "New post successfully created."
+    POST_AUTHOR_BUTTON_XPATH = ".//a[@href='/profile/{username}']"

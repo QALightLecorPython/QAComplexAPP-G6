@@ -1,5 +1,4 @@
 """Tests related to start page"""
-import logging
 
 import pytest
 
@@ -9,8 +8,6 @@ from constants.base import BaseConstants
 @pytest.mark.parametrize("browser", [BaseConstants.CHROME, BaseConstants.FIREFOX])
 class TestStartPage:
     """Stores tests for start page base functionality"""
-
-    log = logging.getLogger("[TestStartPage]")
 
     def test_invalid_login(self, start_page, random_user):
         """
