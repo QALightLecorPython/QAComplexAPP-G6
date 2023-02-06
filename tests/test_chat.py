@@ -1,6 +1,6 @@
-from time import sleep
-
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from constants.base import BaseConstants
 
@@ -9,6 +9,10 @@ from constants.base import BaseConstants
 class TestChat:
     """Stores tests for chat base functionality"""
 
+    @allure.epic("Chat")
+    @allure.feature("Send messages")
+    @allure.story("Test chat messages sending")
+    @allure.severity(Severity.CRITICAL)
     def test_self_messages(self, hello_page):
         """
         - Pre-conditions:
@@ -35,5 +39,3 @@ class TestChat:
 
             # Verify that message appears
             hello_page.chat.verify_messages(expected_messages)
-
-        sleep(5)

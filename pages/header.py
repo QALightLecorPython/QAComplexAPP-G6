@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
@@ -13,6 +14,7 @@ class Header(BasePage):
         self.const = HeaderConsts
 
     @log_wrapper
+    @allure.step
     def navigate_to_create_post(self):
         """Navigate to create post page via header button"""
         self.click(xpath=self.const.CREATE_POST_BUTTON_XPATH)
@@ -21,6 +23,7 @@ class Header(BasePage):
         return CreatePostPage(self.driver)
 
     @log_wrapper
+    @allure.step
     def sign_out(self):
         """Navigate to start page via Sign Out"""
         self.click(xpath=self.const.SIGN_OUT_BUTTON_XPATH)
@@ -29,6 +32,7 @@ class Header(BasePage):
         return StartPage(self.driver)
 
     @log_wrapper
+    @allure.step
     def navigate_to_profile_page(self, username):
         """Navigate to profile page via username"""
         self.click(xpath=self.const.MY_PROFILE_BUTTON_XPATH.format(username=username.lower()))
@@ -37,11 +41,13 @@ class Header(BasePage):
         return ProfilePage(self.driver)
 
     @log_wrapper
+    @allure.step
     def open_chat(self):
         """Open chat via button"""
         self.click(xpath=self.const.CHAT_BUTTON_XPATH)
 
     @log_wrapper
+    @allure.step
     def navigate_to_post_by_title(self, title):
         """Search for the post and click on it"""
         self.click(xpath=self.const.SEARCH_BUTTON_XPATH)

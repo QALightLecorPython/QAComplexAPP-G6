@@ -1,3 +1,5 @@
+import allure
+
 from constants.hello_page import HelloPageConsts
 from pages.base_page import BasePage
 from pages.chat import Chat
@@ -15,6 +17,7 @@ class HelloPage(BasePage):
         self.chat = Chat(self.driver)
 
     @log_wrapper
+    @allure.step
     def verify_sign_up_message(self, username):
         """Verify sign up message"""
         assert self.compare_element_text(

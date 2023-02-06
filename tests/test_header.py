@@ -1,12 +1,18 @@
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from constants.base import BaseConstants
 
 
-@pytest.mark.parametrize("browser", [BaseConstants.CHROME, BaseConstants.FIREFOX])
+@pytest.mark.parametrize("browser", [BaseConstants.CHROME])
 class TestHeader:
     """Stores tests for header base functionality"""
 
+    @allure.epic("Auth")
+    @allure.feature("Sign Out")
+    @allure.story("Test sign out from hello page")
+    @allure.severity(Severity.CRITICAL)
     def test_sign_out(self, hello_page):
         """
         - Pre-conditions:

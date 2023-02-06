@@ -1,5 +1,6 @@
 from itertools import zip_longest
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
@@ -15,11 +16,13 @@ class Chat(BasePage):
         self.const = ChatConsts
 
     @log_wrapper
+    @allure.step
     def send_message(self, text):
         """Send message via chat"""
         self.fill_field(xpath=self.const.INPUT_FIELD_XPATH, value=text + Keys.ENTER)
 
     @log_wrapper
+    @allure.step
     def verify_messages(self, expected_messages):
         """Verify all sent messages"""
         messages = self.wait_until_displayed_elements(by=By.XPATH, xpath=self.const.SELF_MESSAGES_XPATH)

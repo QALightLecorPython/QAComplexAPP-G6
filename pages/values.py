@@ -17,7 +17,7 @@ class User:
         self.password = f"{self.username}PwD"
 
     def __repr__(self):
-        return f"User:(username={self.username}, email={self.email}, password={self.password}"
+        return f"User:(username={self.username}, email={self.email}, password={self.password})"
 
 
 class Post:
@@ -32,4 +32,4 @@ class Post:
         self.body = random_text(120)
 
     def __repr__(self):
-        return f"Post:(title={self.title}"
+        return f"Post:(title={self.title})"

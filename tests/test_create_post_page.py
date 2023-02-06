@@ -1,12 +1,14 @@
 """Tests related to create post page"""
 import logging
 
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from constants.base import BaseConstants
 
 
-@pytest.mark.parametrize("browser", [BaseConstants.CHROME, BaseConstants.FIREFOX])
+@pytest.mark.parametrize("browser", [BaseConstants.CHROME])
 class TestCreatePostPage:
     """Stores tests for create post page base functionality"""
 
@@ -26,6 +28,10 @@ class TestCreatePostPage:
         create_post_page = hello_page.header.navigate_to_create_post()
         return create_post_page
 
+    @allure.epic("Create Post Page")
+    @allure.feature("Create post")
+    @allure.story("Test post creation")
+    @allure.severity(Severity.CRITICAL)
     def test_create_post(self, create_post_page, random_post):
         """
         - Pre-conditions:

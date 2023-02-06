@@ -1,6 +1,7 @@
 """Tests related to profile page"""
-
+import allure
 import pytest
+from allure_commons.types import Severity
 
 from constants.base import BaseConstants
 from pages.utils import random_str, random_text
@@ -36,6 +37,10 @@ class TestProfilePage:
 
         return user
 
+    @allure.epic("Profile Page")
+    @allure.feature("Username")
+    @allure.story("Test username on profile page")
+    @allure.severity(Severity.CRITICAL)
     def test_profile_username(self, hello_page, random_user):
         """
          - Pre-conditions:
@@ -50,6 +55,10 @@ class TestProfilePage:
         # Verify profile username
         profile_page.verify_profile_user_name(random_user.username)
 
+    @allure.epic("Profile Page")
+    @allure.feature("Following")
+    @allure.story("Test followings tab")
+    @allure.severity(Severity.NORMAL)
     def test_followings(self, user_with_post, hello_page, random_user):
         """
         - Pre-conditions:

@@ -1,3 +1,5 @@
+import allure
+
 from constants.create_post_page import CreatePostPageConsts
 from pages.base_page import BasePage
 from pages.header import Header
@@ -13,6 +15,7 @@ class CreatePostPage(BasePage):
         self.header = Header(self.driver)
 
     @log_wrapper
+    @allure.step
     def create_post(self, post):
         """Create post using provided values"""
         self.fill_field(xpath=self.const.TITLE_INPUT_XPATH, value=post.title)
