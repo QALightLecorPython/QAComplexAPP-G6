@@ -38,3 +38,8 @@ def random_post():
     post = Post()
     post.fill_data()
     return post
+
+
+@pytest.fixture()
+def hello_page(start_page, random_user):
+    return start_page.sign_up(random_user)

@@ -17,3 +17,11 @@ class PostPage(BasePage):
         """Verify post creation message"""
         assert self.compare_element_text(xpath=self.const.POST_CREATED_MESSAGE_XPATH,
                                          text=self.const.POST_CREATED_MESSAGE_TEXT)
+
+    @log_wrapper
+    def navigate_to_author_profile(self, username):
+        """Navigate to author profile via username"""
+        self.click(xpath=self.const.POST_AUTHOR_BUTTON_XPATH.format(username=username.lower()))
+
+        from pages.profile_page import ProfilePage
+        return ProfilePage(self.driver)

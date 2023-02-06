@@ -65,7 +65,7 @@ def log_wrapper(func):
 def create_driver(browser):
     """Create driver according to provided browser"""
     if browser == BaseConstants.CHROME:
-        driver = webdriver.Chrome(executable_path=BaseConstants.DRIVER_PATH)
+        driver = webdriver.Chrome(executable_path=BaseConstants.CHROME)
     elif browser == BaseConstants.FIREFOX:
         driver = webdriver.Firefox(executable_path=BaseConstants.DRIVER_PATH)
     else:

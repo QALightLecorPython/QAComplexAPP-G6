@@ -8,6 +8,7 @@ class User:
         self.username = username
         self.email = email
         self.password = password
+        self.posts = []
 
     def fill_data(self):
         """Fill data by random generated text"""
