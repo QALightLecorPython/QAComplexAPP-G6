@@ -17,7 +17,7 @@ def random_num():
 
 def random_str(length=5):
     """Generate random string"""
-    return ''.join(random.choice(string.ascii_letters) for _ in range(length))
+    return "".join(random.choice(string.ascii_letters) for _ in range(length))
 
 
 def random_text(length=15, preset=EN_TEXT):
@@ -32,9 +32,7 @@ def wait_until_ok(timeout=5, period=0.25):
 
     def decorator(original_function):
         def wrapper(*args, **kwargs):
-            end_time = datetime.datetime.now() + datetime.timedelta(
-                seconds=timeout
-            )
+            end_time = datetime.datetime.now() + datetime.timedelta(seconds=timeout)
             while True:
                 try:
                     return original_function(*args, **kwargs)
@@ -68,6 +66,8 @@ def create_driver(browser):
         options = webdriver.ChromeOptions()
         options.add_argument("--window-size=1920,1080")
         options.add_argument("headless")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--no-sandbox")
         driver = webdriver.Chrome(options=options)
     elif browser == BaseConstants.FIREFOX:
         driver = webdriver.Firefox()

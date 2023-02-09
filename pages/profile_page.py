@@ -30,6 +30,8 @@ class ProfilePage(BasePage):
     @allure.step
     def verify_followings(self, username, count=1):
         """Verify followings count"""
-        assert self.compare_element_text(xpath=self.const.FOLLOWING_TAB_XPATH.format(user=username.lower()),
-                                         text=self.const.FOLLOWING_TAB_TEXT.format(count=count),
-                                         strip=True)
+        assert self.compare_element_text(
+            xpath=self.const.FOLLOWING_TAB_XPATH.format(user=username.lower()),
+            text=self.const.FOLLOWING_TAB_TEXT.format(count=count),
+            strip=True,
+        )

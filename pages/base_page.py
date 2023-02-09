@@ -15,29 +15,17 @@ class BasePage:
     @allure.step
     def wait_until_displayed(self, by, xpath):
         """Waits until element displayed and return it, else raise an exception"""
-        return self.waiter.until(
-            method=expected_conditions.visibility_of_element_located(
-                (by, xpath)
-            )
-        )
+        return self.waiter.until(method=expected_conditions.visibility_of_element_located((by, xpath)))
 
     @allure.step
     def wait_until_displayed_elements(self, by, xpath):
         """Waits until element displayed and return it, else raise an exception"""
-        return self.waiter.until(
-            method=expected_conditions.visibility_of_all_elements_located(
-                (by, xpath)
-            )
-        )
+        return self.waiter.until(method=expected_conditions.visibility_of_all_elements_located((by, xpath)))
 
     @allure.step
     def wait_until_clickable(self, by, xpath):
         """Waits until element clickable and return it, else raise an exception"""
-        return self.waiter.until(
-            method=expected_conditions.element_to_be_clickable(
-                (by, xpath)
-            )
-        )
+        return self.waiter.until(method=expected_conditions.element_to_be_clickable((by, xpath)))
 
     @allure.step
     def is_element_exists(self, xpath):
