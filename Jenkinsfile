@@ -6,7 +6,7 @@
 pipeline {
   agent {
     label 'master'
-  }
+  } // agent
   options {
     timeout(time: 1, unit: 'HOURS')
     timestamps()
