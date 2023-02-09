@@ -1,3 +1,5 @@
+import allure
+
 from constants.post_page import PostPageConsts
 from pages.base_page import BasePage
 from pages.header import Header
@@ -13,12 +15,14 @@ class PostPage(BasePage):
         self.header = Header(self.driver)
 
     @log_wrapper
+    @allure.step
     def verify_post_created(self):
         """Verify post creation message"""
         assert self.compare_element_text(xpath=self.const.POST_CREATED_MESSAGE_XPATH,
                                          text=self.const.POST_CREATED_MESSAGE_TEXT)
 
     @log_wrapper
+    @allure.step
     def navigate_to_author_profile(self, username):
         """Navigate to author profile via username"""
         self.click(xpath=self.const.POST_AUTHOR_BUTTON_XPATH.format(username=username.lower()))

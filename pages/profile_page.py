@@ -1,3 +1,5 @@
+import allure
+
 from constants.profile_page import ProfilePageConsts
 from pages.base_page import BasePage
 from pages.header import Header
@@ -13,16 +15,19 @@ class ProfilePage(BasePage):
         self.header = Header(self.driver)
 
     @log_wrapper
+    @allure.step
     def verify_profile_user_name(self, username):
         """Verify username in the profile"""
         assert self.compare_element_text(xpath=self.const.USERNAME_XPATH, text=username.lower(), strip=True)
 
     @log_wrapper
+    @allure.step
     def follow(self):
         """Click on follow button"""
         self.click(xpath=self.const.FOLLOW_BUTTON_XPATH)
 
     @log_wrapper
+    @allure.step
     def verify_followings(self, username, count=1):
         """Verify followings count"""
         assert self.compare_element_text(xpath=self.const.FOLLOWING_TAB_XPATH.format(user=username.lower()),

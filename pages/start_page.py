@@ -1,3 +1,5 @@
+import allure
+
 from constants.start_page import StartPageConst
 from pages.base_page import BasePage
 from pages.utils import wait_until_ok, log_wrapper
@@ -11,6 +13,7 @@ class StartPage(BasePage):
         self.const = StartPageConst
 
     @log_wrapper
+    @allure.step
     def sign_in(self, user):
         """Sign in using provided values"""
         # Fill fields
@@ -20,6 +23,7 @@ class StartPage(BasePage):
         self.click(self.const.SIGN_IN_BUTTON_XPATH)
 
     @log_wrapper
+    @allure.step
     def verify_sign_in_error(self):
         """Verify that text is matches to expected"""
         assert self.compare_element_text(xpath=self.const.SIGN_IN_ERROR_XPATH, text=self.const.SIGN_IN_ERROR_TEXT)
@@ -31,6 +35,7 @@ class StartPage(BasePage):
         assert not self.is_element_exists(self.const.SIGN_UP_BUTTON_XPATH), "Sign Up button didn't disappear"
 
     @log_wrapper
+    @allure.step
     def sign_up(self, user, verify=True):
         """Sign up using provided values"""
         # Fill fields
@@ -47,6 +52,7 @@ class StartPage(BasePage):
         return HelloPage(self.driver)
 
     @log_wrapper
+    @allure.step
     def verify_sign_in_exists(self):
         """Verify that sign-in button is present on the page"""
         assert self.is_element_exists(xpath=self.const.SIGN_IN_BUTTON_XPATH)

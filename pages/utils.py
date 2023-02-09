@@ -65,9 +65,12 @@ def log_wrapper(func):
 def create_driver(browser):
     """Create driver according to provided browser"""
     if browser == BaseConstants.CHROME:
-        driver = webdriver.Chrome(executable_path=BaseConstants.CHROME)
+        options = webdriver.ChromeOptions()
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument("headless")
+        driver = webdriver.Chrome(options=options)
     elif browser == BaseConstants.FIREFOX:
-        driver = webdriver.Firefox(executable_path=BaseConstants.DRIVER_PATH)
+        driver = webdriver.Firefox()
     else:
         raise ValueError(f"Unknown browser name: {browser}")
     driver.implicitly_wait(1)
