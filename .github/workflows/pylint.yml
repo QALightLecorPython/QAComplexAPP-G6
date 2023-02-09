@@ -19,9 +19,11 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install black
       - name: Analysing the code with pylint
+        if: always()
         run: |
           python -m pylint tests pages
       - name: Run Black
+        if: always()
         uses: wearerequired/lint-action@v1
         with:
           black: true
