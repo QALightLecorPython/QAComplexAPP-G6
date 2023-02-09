@@ -17,8 +17,9 @@ pipeline {
         script {
           currentBuild.displayName = "#${env.BUILD_NUMBER} (${env.GIT_COMMIT.take(8)}) ${env.GIT_BRANCH}"
           sh '''
-            /usr/local/bin/python3.9 -m pip install -r requirements.txt
-            /usr/local/bin/python3.9 -m pytest tests/ -n 4
+            mkdir screenshots
+            python3 -m pip install -r requirements.txt
+            python3 -m pytest tests/ -n 4 --html=report.html --self-contained-html
           '''
         } // script
       } // steps
@@ -26,6 +27,7 @@ pipeline {
   } // stages
   post {
     always {
+      archiveArtifacts artifacts: '**/screenshots/*.png, **/*.html', allowEmptyArchive: true
       cleanWs()
     } // always
   } // post
