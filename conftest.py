@@ -64,7 +64,5 @@ def pytest_runtest_makereport(item, call):
     if result.failed:
         driver = [item.funcargs[arg] for arg in item.funcargs if arg.endswith("_page")][0].driver  # hello_page.driver
         file_name = f"{item.name}_{datetime.datetime.now().strftime('%H-%M-%S')}.png"
-        file_path = (
-            "/Users/almin/PycharmProjects/QAComplexAPP-G6/screenshots"
-        )
+        file_path = ("./screenshots")
         driver.save_screenshot(os.path.join(file_path, file_name))
