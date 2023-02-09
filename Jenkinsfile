@@ -26,7 +26,7 @@ pipeline {
   } // stages
   post {
     always {
-      archiveArtifacts artifacts: '**/screenshots/**, **/*.html', allowEmptyArchive: true
+      archiveArtifacts artifacts: '**/*.png, **/*.html', allowEmptyArchive: true
       cleanWs()
     } // always
   } // post
