@@ -6,7 +6,7 @@ import pytest
 from constants.base import BaseConstants
 from pages.start_page import StartPage
 from pages.utils import create_driver
-from pages.values import User, Post
+from pages.values import Post, User
 
 
 @pytest.fixture()
@@ -50,9 +50,11 @@ def hello_page(start_page, random_user):
 
 
 def pytest_sessionstart(session):
-    os.environ["PATH"] = os.environ["PATH"] \
-                         + f":{os.path.abspath(BaseConstants.DRIVER_PATH)}" \
-                         + f":{os.path.abspath(BaseConstants.DEB_DRIVER_PATH)}"
+    os.environ["PATH"] = (
+            os.environ["PATH"]
+            + f":{os.path.abspath(BaseConstants.DRIVER_PATH)}"
+            + f":{os.path.abspath(BaseConstants.DEB_DRIVER_PATH)}"
+    )
 
 
 @pytest.hookimpl(hookwrapper=True)

@@ -2,7 +2,7 @@ import allure
 
 from constants.start_page import StartPageConst
 from pages.base_page import BasePage
-from pages.utils import wait_until_ok, log_wrapper
+from pages.utils import log_wrapper, wait_until_ok
 
 
 class StartPage(BasePage):
@@ -49,6 +49,7 @@ class StartPage(BasePage):
             self.click(self.const.SIGN_UP_BUTTON_XPATH)
 
         from pages.hello_page import HelloPage
+
         return HelloPage(self.driver)
 
     @log_wrapper

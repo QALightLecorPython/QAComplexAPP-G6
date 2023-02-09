@@ -18,8 +18,9 @@ class PostPage(BasePage):
     @allure.step
     def verify_post_created(self):
         """Verify post creation message"""
-        assert self.compare_element_text(xpath=self.const.POST_CREATED_MESSAGE_XPATH,
-                                         text=self.const.POST_CREATED_MESSAGE_TEXT)
+        assert self.compare_element_text(
+            xpath=self.const.POST_CREATED_MESSAGE_XPATH, text=self.const.POST_CREATED_MESSAGE_TEXT
+        )
 
     @log_wrapper
     @allure.step
@@ -28,4 +29,5 @@ class PostPage(BasePage):
         self.click(xpath=self.const.POST_AUTHOR_BUTTON_XPATH.format(username=username.lower()))
 
         from pages.profile_page import ProfilePage
+
         return ProfilePage(self.driver)

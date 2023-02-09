@@ -24,4 +24,5 @@ class CreatePostPage(BasePage):
         self.click(xpath=self.const.SAVE_POST_BUTTON_XPATH)
 
         from pages.post_page import PostPage
+
         return PostPage(self.driver)

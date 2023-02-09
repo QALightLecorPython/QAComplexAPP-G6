@@ -1,9 +1,8 @@
 """Stores value objects related to the product"""
-from pages.utils import random_str, random_num, random_text
+from pages.utils import random_num, random_str, random_text
 
 
 class User:
-
     def __init__(self, username="", email="", password=""):
         self.username = username
         self.email = email
@@ -21,7 +20,6 @@ class User:
 
 
 class Post:
-
     def __init__(self, title="", body=""):
         self.title = title
         self.body = body

@@ -5,7 +5,7 @@ from allure_commons.types import Severity
 
 from constants.base import BaseConstants
 from pages.utils import random_str, random_text
-from pages.values import User, Post
+from pages.values import Post, User
 
 
 @pytest.mark.parametrize("browser", [BaseConstants.CHROME])
@@ -43,11 +43,11 @@ class TestProfilePage:
     @allure.severity(Severity.CRITICAL)
     def test_profile_username(self, hello_page, random_user):
         """
-         - Pre-conditions:
-             - Sign Up as a user
-         - Steps:
-             - Click on "My Profile"
-             - Verify profile username
+        - Pre-conditions:
+            - Sign Up as a user
+        - Steps:
+            - Click on "My Profile"
+            - Verify profile username
         """
         # Click on "My Profile"
         profile_page = hello_page.header.navigate_to_profile_page(random_user.username)
